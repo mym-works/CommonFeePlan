@@ -15,7 +15,9 @@ def items_put(house_name, body):
             'Type': 'Purchase',
             'Tenant': body['Tenant'],
             'Item': body['Item'],
-            'Price': int(body['Price'])
+            'Price': int(body['Price']),
+            'Quantity': int(body['Quantity']),
+            'TotalPrice': int(body['TotalPrice'])
         }
     )
     return db_response
