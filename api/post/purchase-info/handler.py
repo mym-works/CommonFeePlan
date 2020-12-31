@@ -8,18 +8,20 @@ dynamodb = boto3.resource('dynamodb')
 
 def items_put(house_name, body):
     dynamodb_table = dynamodb.Table('borderless-common-fee')
-    db_response = dynamodb_table.put_item(
-        Item={
-            'House': house_name,
-            'Timestamp': body['Timestamp'],
-            'Type': 'Purchase',
-            'Tenant': body['Tenant'],
-            'Item': body['Item'],
-            'Price': int(body['Price']),
-            'Quantity': int(body['Quantity']),
-            'TotalPrice': int(body['TotalPrice'])
-        }
-    )
+
+    for purchase_item in body:
+        db_response = dynamodb_table.put_item(
+            Item={
+                'House': house_name,
+                'Timestamp': purchase_item['Timestamp'],
+                'Type': 'Purchase',
+                'Tenant': purchase_item['Tenant'],
+                'Item': purchase_item['Item'],
+                'Price': int(purchase_item['Price']),
+                'Quantity': int(purchase_item['Quantity']),
+                'TotalPrice': int(purchase_item['TotalPrice'])
+            }
+        )
     return db_response
 
 
@@ -28,7 +30,6 @@ def main(event, context):
     house_name = (event_path.split('/'))[-1]
 
     body = json.loads(event['body'])
-
     db_response = items_put(house_name.capitalize(), body)
 
     response = {
