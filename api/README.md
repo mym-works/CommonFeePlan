@@ -139,25 +139,41 @@ curl -X POST https://api.borderless.mym.works/pay/{houseId} --header 'x-api-key:
 |:---:|:---|
 |body| 買い物をした商品名と価格はユーザが入力|
 
+Timestamp の値は各商品ごとに違う値を指定しないと、データベースの内容が重複してしまいます。
 
 - Example Value Model
 ```
-{
-  "Timestamp": "String",
-  "Tenant": "String",
-  "Item": "String",
-  "Price": int
-} 
+[
+  {
+    "Timestamp": "String",
+    "Tenant": "String",
+    "Item": "String",
+    "Price": int,
+    "Quantity": int,
+    "TotalPrice": int
+  },
+  .
+  .
+  .
+]
 ```
 
 - How to use
+
 ```
-{
-  "Timestamp": "2020/10/19 20:04:36",
-  "Tenant": "<house member name>",
-  "Item": "Plastic bag",
-  "Price": 1500
-}
+[
+  {
+    "Timestamp": "2020/10/19 20:04:36",
+    "Tenant": "<house member name>",
+    "Item": "Plastic bag",
+    "Price": 1500,
+    "Quantity": 2,
+    "TotalPrice": 3000
+  },
+  .
+  .
+  .
+]
 ```
 
 ### Response
