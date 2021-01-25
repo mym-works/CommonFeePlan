@@ -1,50 +1,51 @@
-.container {
-  padding: 40px 20px;
+
+.btn-add {
+  border: 1px solid #FF7A00;
+  background: transparent;
+  display: block;
+  width: 100%;
+  border-radius: 1rem;
+  font-size: .875rem;
+  padding: 1rem 0;
+  padding-left: 2rem;
+  color: #FF7A00;
+  background: url(/images/icon-plus.svg) no-repeat 100%;
+  background-position: 35% 50%;
 }
 
-.main {
-}
-
-.title {
-  margin: 0 0 20px;
-  font-size: 28px;
-  color: #000000;
-}
-
-.description {
-  margin: 0 0 40px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #B6B6B6;
-}
-
-.subtitle {
-  margin: 0 0 40px;
-  font-size: 14px;
-  color: #000000;
-}
-
-.center-title {
-  margin: 80px 0 60px;
-  font-size: 28px;
-  color: #000000;
-  text-align: center;
-}
-
-.center-description {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #B6B6B6;
-  text-align: center;
-}
-
-.submit {
+.btn-submit {
   border: none;
   display: block;
   width: 100%;
-  border-radius: 68px;
-  font-size: 17px;
-  padding: 16px;
+  border-radius: 2rem;
+  font-size: 1rem;
+  padding: 1rem 0;
   background: #FF7A00;
   color: white;
+}
+
+.btn-submit svg {
+  width: 1rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.input {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  font-size: 18px;
+  padding: 0 1rem .5rem 0;
+  border-bottom: 1px solid #FF7A00;
+  -webkit-appearance: none;
+  appearance: none;
+  background: url(/images/icon-arrow.svg) no-repeat 100% 25%;
+}
+
+select.input {
+  overflow: hidden;
+}
+
+.input:focus {
+  outline: 0;
 }
