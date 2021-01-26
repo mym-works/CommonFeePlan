@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <Layout pageName={pageName} pageDescription={pageDescription} pageHero={pageHero}>
       <div className="mb-10">
-        <Price price="400" />
+        <Price price={400} />
       </div>
       <div className="mb-10">
         <ul>

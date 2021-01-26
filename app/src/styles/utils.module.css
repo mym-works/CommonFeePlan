@@ -1,4 +1,3 @@
-
 .btn-add {
   border: 1px solid #FF7A00;
   background: transparent;
@@ -23,6 +22,9 @@
   background: #FF7A00;
   color: white;
 }
+.btn-submit:disabled {
+  background: #E7E7E7;
+}
 
 .btn-submit svg {
   width: 1rem;
@@ -39,11 +41,12 @@
   border-bottom: 1px solid #FF7A00;
   -webkit-appearance: none;
   appearance: none;
-  background: url(/images/icon-arrow.svg) no-repeat 100% 25%;
 }
 
-select.input {
+select.input,
+[type=date].input {
   overflow: hidden;
+  background: url(/images/icon-arrow.svg) no-repeat 100% 25%/12px;
 }
 
 .input:focus {

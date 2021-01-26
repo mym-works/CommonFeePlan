@@ -10,6 +10,8 @@ const pageDescription = 'Hello! Thank you for shopping 😀 Fill out this form a
 
 export default function Home() {
   const [processing, setProcessing] = useState(false)
+  const [items, setItems] = useState([])
+  const [price, setPrice] = useState(0)
   const [members, setMembers] = useState([{
     id: -1,
     name: '-'
@@ -31,16 +33,23 @@ export default function Home() {
     }, 2000)
   }
 
+  const updateItems = (childItems) => {
+    setItems(childItems)
+    setPrice(childItems.reduce((sum, element) => {
+      return sum + ((element.price || 0) * element.quantity) 
+    }, 0))
+  }
+
   return (
     <Layout pageName={pageName} pageDescription={pageDescription}>
       <h2 className="mb-10 text-sm leading-none font-bold">What's items</h2>
 
-      <div className="mb-15">
-        <Item />
+      <div className="mb-14">
+        <Item items={items} update={updateItems} />
       </div>
       
       <div className="mb-10">
-        <Price price="400" />
+        <Price price={price} />
       </div>
 
       <select className={utilStyles.input + ' mb-10'}>
