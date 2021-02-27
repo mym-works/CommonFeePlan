@@ -2,7 +2,6 @@ service: CommonFeePlan-get-paid-member
 
 plugins:
   - serverless-domain-manager
-
 custom:
   customDomain:
     domainName: api.borderless.mym.works
@@ -32,4 +31,6 @@ functions:
       - http:
           path: /{house_name}
           method: get
+          cors: 
+            origin: http://localhost:3000
           private: true
