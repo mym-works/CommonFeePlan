@@ -33,4 +33,6 @@ functions:
       - http:
           path: /{house_name}
           method: get
+          cors: 
+            origin: http://localhost:3000
           private: true
