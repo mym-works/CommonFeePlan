@@ -42,7 +42,9 @@ def main(event, context):
     response = {
         "statusCode": 200,
         "headers": {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Methods': 'GET'
         },
         "body": json.dumps(db_response, ensure_ascii=False, default=decimal_default_proc)
     }
