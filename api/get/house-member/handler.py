@@ -23,7 +23,9 @@ def main(event, context):
     response = {
         "statusCode": 200,
         "headers": {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Methods': 'GET'
         },
         "body": json.dumps(house_member, ensure_ascii=False)
     }
