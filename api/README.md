@@ -46,7 +46,7 @@ curl -X GET https://api.borderless.mym.works/member/{houseId} --header 'x-api-ke
 
 ## /paidthismonth/{houseId}
 
-- 支払ったメンバーを取得
+- 当月分に支払ったメンバーを取得
 - GET
 
 ### Parameter
