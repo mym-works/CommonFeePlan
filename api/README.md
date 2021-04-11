@@ -94,6 +94,56 @@ curl -X GET https://api.borderless.mym.works/member/{houseId} --header 'x-api-ke
 curl -X GET https://api.borderless.mym.works/paidthismonth/{houseId} --header 'x-api-key:API_KEY'
 ```
 
+## /paidhistory/{houseId}/{tenantName}
+
+- 各メンバーの過去 12 ヶ月分の支払い履歴を取得する
+- GET
+
+### Parameter
+|Name|Description|
+|:---:|:---:|
+|houseId| ハウス名より入居しているハウスメンバーを取得（ex. oimachi）|
+|tenantName| ハウスに入居しているハウスメンバーの名前（ex. Kohei）|
+
+### Response
+
+- API 実行時から過去 12 ヶ月分の支払い履歴を取得する
+- 過去 12 ヶ月の内容が存在しない場合は、[] オブジェクト内に 12 個表示されず直近の内容が取得される
+
+|Code|Description|
+|:---:|:---:|
+|200|各メンバーの過去 12 ヶ月分の支払い履歴を取得|
+
+```
+[
+  {
+    "Timestamp": "2020/08/12 23:24:34",
+    "LiabilityMonth": "2020/08/01 00:00:00"
+    "Tenant": "<house member name>",
+    "Price": 400
+  },
+  {
+    "Timestamp": "2020/09/04 18:06:24",
+    "LiabilityMonth": "2020/09/01 00:00:00"
+    "Tenant": "<house member name>",
+    "Price": 400
+  },
+  {
+    "Timestamp": "2020/10/19 20:04:36",
+    "LiabilityMonth": "2020/10/01 00:00:00"
+    "Tenant": "<house member name>",
+    "Price": 400
+  }
+]
+```
+
+### Example
+
+```
+curl -X GET https://api.borderless.mym.works/paidhistory/{houseId}/{tenantName} --header 'x-api-key:API_KEY'
+```
+
+
 ## /pay/{houseId}
 
 - 支払った内容を記載
