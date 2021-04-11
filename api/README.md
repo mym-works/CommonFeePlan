@@ -120,18 +120,21 @@ curl -X GET https://api.borderless.mym.works/paidthismonth/{houseId} --header 'x
     "Timestamp": "2020/08/12 23:24:34",
     "LiabilityMonth": "2020/08/01 00:00:00"
     "Tenant": "<house member name>",
+    "Type": "Pay",
     "Price": 400
   },
   {
     "Timestamp": "2020/09/04 18:06:24",
     "LiabilityMonth": "2020/09/01 00:00:00"
     "Tenant": "<house member name>",
+    "Type": "Pay",
     "Price": 400
   },
   {
     "Timestamp": "2020/10/19 20:04:36",
     "LiabilityMonth": "2020/10/01 00:00:00"
     "Tenant": "<house member name>",
+    "Type": "Pay",
     "Price": 400
   }
 ]
