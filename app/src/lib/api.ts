@@ -33,6 +33,28 @@ export const getMembers = async () => {
   }
 };
 
+export const getMemberHistory = async (name) => {
+  try {
+    const response = await fetch(endpoint + "/paidhistory/" + houseId + '/' + name, {
+      headers: {
+        "x-api-key": apiKey,
+      },
+    });
+    // return response.json()
+
+    const data = await response.json();
+
+    return data.map((history) => {
+      return {
+        price: history.Price,
+        liabilityMonth: history.LiabilityMonth, // 支払い日時
+      };
+    });
+  } catch (e) {
+    alert(e.message);
+  }
+};
+
 export const postPurchaseItems = async (memberId, items) => {
   try {
     const postData = items.map((item, index) => {
@@ -51,6 +73,31 @@ export const postPurchaseItems = async (memberId, items) => {
     const response = await fetch(endpoint + "/purchase/" + houseId, {
       method: "POST",
 
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey,
+      },
+      body: JSON.stringify(postData),
+    });
+    return await response.json();
+  } catch (e) {
+    alert(e.message);
+  }
+};
+
+export const postPaymentMonth = async (id, liabilityMonth, price) => {
+  try {
+    const postData = {
+      "Tenant": id,
+      "Timestamp": dayjs().format("YYYY/MM/DD HH:mm:ss"),
+      "LiabilityMonth": liabilityMonth,
+      "Price": price
+    }
+
+    console.log(postData);
+
+    const response = await fetch(endpoint + "/pay/" + houseId, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         "x-api-key": apiKey,

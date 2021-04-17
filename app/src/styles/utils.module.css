@@ -46,7 +46,11 @@
 select.input,
 [type=date].input {
   overflow: hidden;
-  background: url(/images/icon-arrow.svg) no-repeat 100% 25%/12px;
+  background: url(/images/icon-arrow.svg) no-repeat 100% 30%/12px;
+}
+
+select.input:disabled {
+  opacity: 0.5;
 }
 
 .input:focus {
