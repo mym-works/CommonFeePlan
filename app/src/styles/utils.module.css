@@ -1,0 +1,58 @@
+.btn-add {
+  border: 1px solid #FF7A00;
+  background: transparent;
+  display: block;
+  width: 100%;
+  border-radius: 1rem;
+  font-size: .875rem;
+  padding: 1rem 0;
+  padding-left: 2rem;
+  color: #FF7A00;
+  background: url(/images/icon-plus.svg) no-repeat 100%;
+  background-position: 35% 50%;
+}
+
+.btn-submit {
+  border: none;
+  display: block;
+  width: 100%;
+  border-radius: 2rem;
+  font-size: 1rem;
+  padding: 1rem 0;
+  background: #FF7A00;
+  color: white;
+}
+.btn-submit:disabled {
+  background: #E7E7E7;
+}
+
+.btn-submit svg {
+  width: 1rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.input {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  font-size: 18px;
+  padding: 0 1rem .5rem 0;
+  border-bottom: 1px solid #FF7A00;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select.input,
+[type=date].input {
+  overflow: hidden;
+  background: url(/images/icon-arrow.svg) no-repeat 100% 30%/12px;
+}
+
+select.input:disabled {
+  opacity: 0.5;
+}
+
+.input:focus {
+  outline: 0;
+}
