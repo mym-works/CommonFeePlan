@@ -31,7 +31,6 @@ def main(event, context):
     event_path = event['path']
     house_name = (event_path.split('/'))[-2]
     tenant_name_url = (event_path.split('/'))[-1]
-    print(tenant_name_url)
     
     # Encode URL (include space and Japanese)
     tenant_name = urllib.parse.unquote(tenant_name_url)
