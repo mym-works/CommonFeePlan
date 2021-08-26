@@ -12,6 +12,7 @@ def items_put(house_name, body):
         Item={
             'House': house_name,
             'Timestamp': body['Timestamp'],
+            'LiabilityMonth': body['LiabilityMonth'],
             'Type': 'Pay',
             'Tenant': body['Tenant'],
             'Price': int(body['Price'])
