@@ -1,3 +1,6 @@
+plugin-install:
+			sls plugin install --name serverless-domain-manager
+
 deploy: 
 			sls deploy --aws-profile mym-lab
 
