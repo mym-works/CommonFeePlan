@@ -3,6 +3,7 @@ import json
 import boto3
 import datetime
 import calendar
+import urllib.parse
 from boto3.dynamodb.conditions import Key, Attr
 from decimal import Decimal
 
@@ -29,8 +30,11 @@ def items_query(house_name, tenant_name, begin_dt_str, end_dt_str):
 def main(event, context):
     event_path = event['path']
     house_name = (event_path.split('/'))[-2]
-    # replace from %20 to space
-    tenant_name = (event_path.split('/'))[-1].replace('%20', ' ')
+    tenant_name_url = (event_path.split('/'))[-1]
+    print(tenant_name_url)
+    
+    # Encode URL (include space and Japanese)
+    tenant_name = urllib.parse.unquote(tenant_name_url)
 
     # To get each person paid history for last 1 year
     now_dt = datetime.datetime.now()
