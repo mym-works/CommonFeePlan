@@ -36,7 +36,7 @@ def main(event, context):
         "statusCode": 200,
         "headers": {
             "content-type": "application/json",
-            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'POST'
         },
         "body": json.dumps(db_response, ensure_ascii=False)

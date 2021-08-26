@@ -33,5 +33,7 @@ functions:
           path: /{house_name}
           method: post
           cors: 
-            origin: http://localhost:3000
+            origins: 
+              - https://commonfee.borderless.mym.works
+              - http://localhost:3000
           private: true
