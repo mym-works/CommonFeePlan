@@ -65,7 +65,7 @@ export default function Home() {
         month: date.format("MMM"),
         processing: false,
         paid: !!paidMonth,
-        price: paidMonth ? paidMonth.price : 400,
+        price: paidMonth ? paidMonth.price : 500,
       });
     }
     originMonths.reverse();
@@ -78,7 +78,7 @@ export default function Home() {
 
     const month = months[index]
     await postPaymentMonth(memberId, month.liabilityMonth, month.price)
-    
+
     months[index].processing = false;
     months[index].paid = true;
     setMonths(Object.assign([], months));
