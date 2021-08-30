@@ -99,8 +99,9 @@ export default function Home() {
       pageDescription={pageDescription}
       pageHero={pageHero}
     >
-      <div className="mb-10">
+      <div className="mb-14">
         {/* <Price price={400} /> */}
+        <h2 className="mb-8 text-sm leading-none font-bold">What's your name?</h2>
         <select
           className={utilStyles.input}
           onChange={(e) => selectMember(e.target.value)}
@@ -115,7 +116,8 @@ export default function Home() {
           })}
         </select>
       </div>
-      <div className="mb-10">
+
+      <div className="mb-14">
         <ul>
           {months.map((month, index) => {
             return (
