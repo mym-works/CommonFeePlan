@@ -1,89 +1,107 @@
 import Price from './price'
 import utilStyles from '../styles/utils.module.css'
+import defaultItems from '../json/defaultItems.json'
 
-interface Props{
-    items: any[],
-    update: (items: any[]) => void
+interface Props {
+  items: any[],
+  update: (items: any[]) => void
 }
 
 export default function Item({ items, update }: Props): JSX.Element {
 
   const addItem = () => {
-      update([
-          {
-            name: "",
-            quantity: 1,
-            price: 0,
-            thumbnail: '',
-            editing: true
-          },
-          ...items
-      ])
+    update([
+      {
+        name: "",
+        quantity: 1,
+        price: 0,
+        thumbnail: '',
+        editing: true
+      },
+      ...items
+    ])
   }
 
   const editItem = (index, name, value) => {
-      items[index][name] = value
+    items[index][name] = value
 
-      if (name === 'editing' && value === false) {
-          setThumbnail(index)
-      }
+    if (name === 'editing' && value === false) {
+      setThumbnail(index)
+    }
 
-      update(Object.assign([], items))
+    update(Object.assign([], items))
   }
 
   const setThumbnail = async (index) => {
-      fetch('https://pixabay.com/api/?key=20028294-070cb605b6300a57fd29bffc5&image_type=photo&q=' + encodeURIComponent(items[index].name)).then(response => response.json()).then((result) => {
-        console.log(result)
-        editItem(index, 'thumbnail', result.hits[0].largeImageURL) // previewURL)
-      })
+    const name = items[index].name 
+
+    const defaultItem = defaultItems.find(item => item.Item === name)
+    if (defaultItem) {
+      editItem(index, 'thumbnail', defaultItem.Image)
+      return
+    }
+
+    fetch('https://pixabay.com/api/?key=20028294-070cb605b6300a57fd29bffc5&image_type=photo&q=' + encodeURIComponent(name)).then(response => response.json()).then((result) => {
+      console.log(result)
+      editItem(index, 'thumbnail', result.hits[0].largeImageURL) // previewURL)
+    })
   }
 
   return (
     <div>
-        <ul>
-            <li className="add" onClick={addItem}>
-                <img src="/images/icon-plus.svg" />
-                Add item
-            </li>
-            {
-                items.map((item, index) => {
-                    return <li key={index}>
-                        {
-                            !item.editing
-                                ? <div className="item">
-                                    <button className="btn-edit" onClick={event => editItem(index, 'editing', true)}>
-                                        <img src="/images/icon-edit.svg" />
-                                    </button>
-                                    <img className="thumbnail" src={item.thumbnail} />
-                                    {
-                                        // <p>Daily essentials</p>
-                                    } 
-                                    <h2>{item.name}</h2>
-                                    <p className="quantity">x {item.quantity}</p>
-                                    <Price price={item.price} size="middle" />
-                                </div>
-                                 
-                                : <div className="edit">
-                                    <label>Item Name<input className={utilStyles.input} type="text" placeholder="Tap to enter" value={item.name} onChange={event => editItem(index, 'name', event.target.value)} /></label>
-                                    <label>Item Price<span className="currency">¥</span><input className={utilStyles.input + ' price'} type="number" min="0" step="1" placeholder="Tap to enter" value={item.price} onChange={event => editItem(index, 'price', parseInt(event.target.value.substr(0, 6)))} /></label>
-                                    <label>Quantity
-                                        <select className={utilStyles.input} value={item.quantity} onChange={event => editItem(index, 'quantity', parseInt(event.target.value))}>
-                                            {
-                                            [...Array(100)].map((_, i) => i + 1).map((value, key) => {
-                                                return <option key={key} value={value}>{value}</option>
-                                            })
-                                            }
-                                        </select>
-                                    </label>
-                                    <button className={utilStyles['btn-submit'] + ' btn-submit'} onClick={event => editItem(index, 'editing', false)} disabled={!item.name}>OK</button>
-                                </div>
-                        }
-                    </li>
-                })
-            }
-        </ul>
+      <ul>
+        <li className="add" onClick={addItem}>
+          <img src="/images/icon-plus.svg" />
+          Add item
+        </li>
+        {
+          items.map((item, index) => {
+            return <li key={index}>
+              {
+                !item.editing
+                  ? <div className="item">
+                    <button className="btn-edit" onClick={event => editItem(index, 'editing', true)}>
+                      <img src="/images/icon-edit.svg" />
+                    </button>
+                    <img className="thumbnail" src={item.thumbnail} />
+                    {
+                      // <p>Daily essentials</p>
+                    }
+                    <h2>{item.name}</h2>
+                    <p className="quantity">x {item.quantity}</p>
+                    <Price price={item.price} size="middle" />
+                  </div>
 
-        <style jsx>{`
+                  : <div className="edit">
+                    <label>Item Name
+                      <input className={utilStyles.input} type="text" placeholder="Tap to enter" value={item.name} onChange={event => editItem(index, 'name', event.target.value)} list="datalist" />
+                      <datalist id="datalist">
+                        {
+                          defaultItems.map(item => 
+                            <option value={item.Item}></option>
+                          )
+                        }
+                      </datalist>
+                    </label>
+                    <label>Item Price<span className="currency">¥</span><input className={utilStyles.input + ' price'} type="number" min="0" step="1" placeholder="Tap to enter" value={item.price} onChange={event => editItem(index, 'price', parseInt(event.target.value.substr(0, 6)))} /></label>
+                    <label>Quantity
+                      <select className={utilStyles.input} value={item.quantity} onChange={event => editItem(index, 'quantity', parseInt(event.target.value))}>
+                        {
+                          [...Array(100)].map((_, i) => i + 1).map((value, key) => {
+                            return <option key={key} value={value}>{value}</option>
+                          })
+                        }
+                      </select>
+                    </label>
+                    <button className={utilStyles['btn-submit'] + ' btn-submit'} onClick={event => editItem(index, 'editing', false)} disabled={!item.name}>OK</button>
+                  </div>
+              }
+            </li>
+          })
+        }
+      </ul>
+
+      <style jsx>{`
             ul {
                 display: flex;
                 overflow-x: scroll;
@@ -178,5 +196,5 @@ border-radius: 10px;
             
         `}</style>
     </div>
-    )
+  )
 }
