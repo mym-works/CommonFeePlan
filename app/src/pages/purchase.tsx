@@ -46,6 +46,7 @@ export default function Home() {
           onChange={(e) => setMemberId(e.target.value)}
           className={utilStyles.input}
         >
+          <option value="">Select tenant name</option>
           {members.map((member, key) => {
             return (
               <option key={key} value={member.id}>
@@ -55,6 +56,7 @@ export default function Home() {
           })}
         </select>
       </div>
+      
       {
         memberId && (
           <div className="mb-14">
