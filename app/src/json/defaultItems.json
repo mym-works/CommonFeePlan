@@ -4,7 +4,51 @@
     "Image": "/images/items/toilet-paper.jpg"
   },
   {
-    "Item": "Sakai2",
-    "Image": "/images/items/sakai_2.jpg"
+    "Item": "Tissue",
+    "Image": "/images/items/tissue.jpg"
+  },
+  {
+    "Item": "Kitchen Paper",
+    "Image": "/images/items/kitchen-paper.jpg"
+  },
+  {
+    "Item": "Oil",
+    "Image": "/images/items/oil.jpg"
+  },
+  {
+    "Item": "Soy Sauce",
+    "Image": "/images/items/soy-sauce.jpg"
+  },
+  {
+    "Item": "Salt",
+    "Image": "/images/items/salt.jpg"
+  },
+  {
+    "Item": "Sugar",
+    "Image": "/images/items/sugar.png"
+  },
+  {
+    "Item": "Detergent",
+    "Image": "/images/items/detergent.jpg"
+  },
+  {
+    "Item": "Plastic Rope",
+    "Image": "/images/items/plastic-rope.jpg"
+  },
+  {
+    "Item": "Sponges",
+    "Image": "/images/items/sponges.jpg"
+  },
+  {
+    "Item": "Plastic Wrap",
+    "Image": "/images/items/plastic-wrap.jpg"
+  },
+  {
+    "Item": "Aluminum Foil",
+    "Image": "/images/items/aluminum-foil.jpg"
+  },
+  {
+    "Item": "Plastic Bag",
+    "Image": "/images/items/plastic-bag.jpg"
   }
 ]
