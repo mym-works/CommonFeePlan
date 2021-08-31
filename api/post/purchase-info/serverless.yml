@@ -35,5 +35,6 @@ functions:
           cors: 
             origins: 
               - https://commonfee.borderless.mym.works
+              - https://lemon-stone-0093d5e00-*.eastasia.azurestaticapps.net
               - http://localhost:3000
           private: true
