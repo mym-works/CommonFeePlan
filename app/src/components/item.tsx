@@ -13,7 +13,7 @@ export default function Item({ items, update }: Props): JSX.Element {
       {
         name: "",
         quantity: 1,
-        price: 0,
+        price: '',
         thumbnail: '',
         editing: true
       },
