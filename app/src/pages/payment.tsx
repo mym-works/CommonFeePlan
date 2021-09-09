@@ -73,10 +73,11 @@ export default function Home() {
   };
 
   const submit = async (index) => {
+    const month = months[index]
+    if (!window.confirm('Are you sure to pay CommonFee?\n' + month.month + '. ' + month.year)) return
     months[index].processing = true;
     setMonths(Object.assign([], months));
 
-    const month = months[index]
     await postPaymentMonth(memberId, month.liabilityMonth, month.price)
 
     months[index].processing = false;
@@ -86,6 +87,7 @@ export default function Home() {
     // setProcessing(true);
     // await postPaymentMonth(month)
     // router.push("thanks");
+    window.alert('Thank you for your payment!\nWe hope to continue good living.')
   };
 
   const setMonthPrice = (index, value) => {
