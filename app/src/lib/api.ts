@@ -21,6 +21,10 @@ export const getMembers = async () => {
     // return response.json()
 
     const data = await response.json();
+    const removeName = "None";
+    data.some(function (member, i) {
+      if (member.Name == removeName) data.splice(i, 1);
+    });
 
     return data.map((member) => {
       return {
