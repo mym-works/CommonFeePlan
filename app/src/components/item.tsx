@@ -39,12 +39,14 @@ export default function Item({ items, update }: Props): JSX.Element {
     if (defaultItem) {
       editItem(index, 'thumbnail', defaultItem.Image)
       return
+    } else {
+      editItem(index, 'thumbnail', '/images/items/others.jpg')
     }
 
-    fetch('https://pixabay.com/api/?key=20028294-070cb605b6300a57fd29bffc5&image_type=photo&q=' + encodeURIComponent(name)).then(response => response.json()).then((result) => {
-      console.log(result)
-      editItem(index, 'thumbnail', result.hits[0].largeImageURL) // previewURL)
-    })
+    // fetch('https://pixabay.com/api/?key=20028294-070cb605b6300a57fd29bffc5&image_type=photo&q=' + encodeURIComponent(name)).then(response => response.json()).then((result) => {
+    //   console.log(result)
+    //   editItem(index, 'thumbnail', result.hits[0].largeImageURL) // previewURL)
+    // })
   }
 
   return (
