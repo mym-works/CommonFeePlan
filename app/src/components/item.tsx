@@ -33,7 +33,7 @@ export default function Item({ items, update }: Props): JSX.Element {
   }
 
   const setThumbnail = async (index) => {
-    const name = items[index].name 
+    const name = items[index].name
 
     const defaultItem = defaultItems.find(item => item.Item === name)
     if (defaultItem) {
@@ -74,10 +74,10 @@ export default function Item({ items, update }: Props): JSX.Element {
 
                   : <div className="edit">
                     <label>Item Name
-                      <input className={utilStyles.input} type="text" placeholder="Tap to enter" value={item.name} onChange={event => editItem(index, 'name', event.target.value)} list="datalist" />
+                      <input className={utilStyles.input} type="text" placeholder="Select item or Input other name" value={item.name} onChange={event => editItem(index, 'name', event.target.value)} list="datalist" />
                       <datalist id="datalist">
                         {
-                          defaultItems.map(item => 
+                          defaultItems.map(item =>
                             <option value={item.Item}></option>
                           )
                         }
@@ -143,7 +143,7 @@ border-radius: 10px;
             }
             .item .thumbnail {
                 height: 114px;
-                clip-path: circle(50%);
+                width: 114px;
                 margin-bottom: 30px;
             }
             .item h2 {
