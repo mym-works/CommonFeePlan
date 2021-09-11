@@ -85,7 +85,7 @@ export default function Item({ items, update }: Props): JSX.Element {
                         }
                       </datalist>
                     </label>
-                    <label>Item Price<span className="currency">¥</span><input className={utilStyles.input + ' price'} type="number" min="0" step="1" placeholder="Tap to enter" value={item.price} onChange={event => editItem(index, 'price', parseInt(event.target.value.substr(0, 6)))} /></label>
+                    <label>Item Price<span className="currency">¥</span><input className={utilStyles.input + ' price'} type="text" pattern="\d*" min="0" step="1" placeholder="Tap to enter" value={item.price} onChange={event => editItem(index, 'price', parseInt(event.target.value ? event.target.value.substr(0, 6) : '0'))} /></label>
                     <label>Quantity
                       <select className={utilStyles.input} value={item.quantity} onChange={event => editItem(index, 'quantity', parseInt(event.target.value))}>
                         {
