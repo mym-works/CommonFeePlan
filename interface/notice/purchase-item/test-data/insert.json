@@ -1,0 +1,52 @@
+{
+    "Records": [
+        {
+            "eventID": "ecbdabbe517afd39c63d59b684e4dd29",
+            "eventName": "INSERT",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "ap-northeast-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1581430684,
+                "Keys": {
+                  "House": {
+                    "S": "Oimachi"
+                  },
+                  "Timestamp": {
+                    "S": "2021/09/11 13:19:50"
+                  }
+                },
+                "NewImage": {
+                  "Item": {
+                    "S": "test"
+                  },
+                  "Type": {
+                    "S": "Purchase"
+                  },
+                  "Tenant": {
+                    "S": "Kohei"
+                  },
+                  "Price": {
+                    "N": "4135"
+                  },
+                  "TotalPrice": {
+                    "N": "4135"
+                  },
+                  "Quantity": {
+                    "N": "1"
+                  },
+                  "House": {
+                    "S": "Oimachi"
+                  },
+                  "Timestamp": {
+                    "S": "2021/09/11 13:19:50"
+                  }
+                },
+                "SequenceNumber": "66400000000000679556686",
+                "SizeBytes": 6,
+                "StreamViewType": "KEYS_ONLY"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:ap-northeast-1:123456789012:table/demo-table/stream/2020-02-11T14:04:42.274"
+        }
+    ]
+}
