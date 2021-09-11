@@ -1,5 +1,6 @@
 import Price from './price'
 import utilStyles from '../styles/utils.module.css'
+import defaultItems from '../json/defaultItems.json'
 
 interface Props {
   items: any[],
@@ -32,10 +33,20 @@ export default function Item({ items, update }: Props): JSX.Element {
   }
 
   const setThumbnail = async (index) => {
-    fetch('https://pixabay.com/api/?key=20028294-070cb605b6300a57fd29bffc5&image_type=photo&q=' + encodeURIComponent(items[index].name)).then(response => response.json()).then((result) => {
-      console.log(result)
-      editItem(index, 'thumbnail', result.hits[0].largeImageURL) // previewURL)
-    })
+    const name = items[index].name
+
+    const defaultItem = defaultItems.find(item => item.Item === name)
+    if (defaultItem) {
+      editItem(index, 'thumbnail', defaultItem.Image)
+      return
+    } else {
+      editItem(index, 'thumbnail', '/images/items/others.jpg')
+    }
+
+    // fetch('https://pixabay.com/api/?key=20028294-070cb605b6300a57fd29bffc5&image_type=photo&q=' + encodeURIComponent(name)).then(response => response.json()).then((result) => {
+    //   console.log(result)
+    //   editItem(index, 'thumbnail', result.hits[0].largeImageURL) // previewURL)
+    // })
   }
 
   return (
@@ -64,8 +75,17 @@ export default function Item({ items, update }: Props): JSX.Element {
                   </div>
 
                   : <div className="edit">
-                    <label>Item Name<input className={utilStyles.input} type="text" placeholder="Tap to enter" value={item.name} onChange={event => editItem(index, 'name', event.target.value)} /></label>
-                    <label>Item Price<span className="currency">¥</span><input className={utilStyles.input + ' price'} type="text" pattern="\d*" min="0" step="1" placeholder="Tap to enter" value={item.price} onChange={event => editItem(index, 'price', parseInt(event.target.value ? event.target.value.substr(0, 6) : '0'))} /></label>
+                    <label>Item Name
+                      <input className={utilStyles.input} type="text" placeholder="Select item or Input other name" value={item.name} onChange={event => editItem(index, 'name', event.target.value)} list="datalist" />
+                      <datalist id="datalist">
+                        {
+                          defaultItems.map(item =>
+                            <option value={item.Item}></option>
+                          )
+                        }
+                      </datalist>
+                    </label>
+                    <label>Item Price<span className="currency">¥</span><input className={utilStyles.input + ' price'} type="number" min="0" step="1" placeholder="Tap to enter" value={item.price} onChange={event => editItem(index, 'price', parseInt(event.target.value.substr(0, 6)))} /></label>
                     <label>Quantity
                       <select className={utilStyles.input} value={item.quantity} onChange={event => editItem(index, 'quantity', parseInt(event.target.value))}>
                         {
@@ -125,7 +145,7 @@ border-radius: 10px;
             }
             .item .thumbnail {
                 height: 114px;
-                clip-path: circle(50%);
+                width: 114px;
                 margin-bottom: 30px;
             }
             .item h2 {
