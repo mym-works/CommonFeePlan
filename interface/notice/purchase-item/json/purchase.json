@@ -1,0 +1,102 @@
+{
+  "to": "",
+  "messages": [
+   {
+     "type": "flex",
+     "altText": "Common Item Bought!",
+     "contents": {
+       "type": "bubble",
+       "direction": "ltr",
+       "header": {
+         "type": "box",
+         "layout": "vertical",
+         "contents": [
+           {
+             "type": "text",
+             "text": "Common Item Bought!",
+             "size": "lg",
+             "align": "center",
+             "gravity": "center",
+             "weight": "bold",
+             "color": "#FFFFFF"
+           }
+         ]
+       },
+       "hero": {
+         "type": "image",
+         "url": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/house-cleaning-product-on-wood-table-royalty-free-image-1584643103.jpg?crop=1.00xw:0.752xh;0,0&resize=980:*",
+         "size": "full",
+         "aspectRatio": "1.51:1",
+         "aspectMode": "fit",
+         "backgroundColor": "#FFFFFF"
+       },
+       "body": {
+         "type": "box",
+         "layout": "vertical",
+         "contents": [
+           {
+             "type": "text",
+             "text": "Purchaser : Maiki",
+             "size": "lg",
+             "align": "start",
+             "weight": "bold",
+             "color": "#000000",
+             "offsetStart": "20px",
+             "margin": "md"
+           },
+           {
+             "type": "text",
+             "text": "Stuff : Toilet Paper",
+             "size": "lg",
+             "weight": "bold",
+             "color": "#000000",
+             "align": "start",
+             "offsetStart": "20px",
+             "margin": "md"
+           },
+           {
+             "type": "text",
+             "text": "Price : ¥300",
+             "weight": "bold",
+             "color": "#000000",
+             "size": "lg",
+             "align": "start",
+             "offsetStart": "20px",
+             "margin": "md"
+           },
+           {
+             "type": "text",
+             "text": "Date : 2020-04-15",
+             "margin": "md",
+             "size": "lg",
+             "weight": "bold",
+             "color": "#000000",
+             "offsetStart": "20px",
+             "align": "start"
+           }
+         ]
+       },
+       "footer": {
+         "type": "box",
+         "layout": "horizontal",
+         "contents": [
+           {
+             "type": "button",
+             "action": {
+               "type": "uri",
+               "label": "Put in your shopping",
+               "uri": "https://commonfee.borderless.mym.works/purchase/"
+             },
+             "color": "#15B0EA"
+           }
+         ]
+       },
+       "styles": {
+         "header": {
+           "backgroundColor": "#199CF6"
+         }
+       }
+     }
+   }
+  ]
+ }

@@ -1,0 +1,32 @@
+service: CommonFeePlan-notice-purchase
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-python-requirements
+
+provider:
+  name: aws
+  runtime: python3.8
+
+  stage: prd
+  region: ap-northeast-1
+
+  memorySize: 128
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - secretsmanager:GetSecretValue
+      Resource:
+        - "arn:aws:secretsmanager:ap-northeast-1:778289792916:secret:commonfee/notice-line-PuCdVb"
+
+functions:
+  main:
+    handler: handler.main
+    environment:
+      SECRET_NAME: commonfee/notice-line
+    events:
+      - stream: 
+          arn: arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderless-common-fee/stream/2021-09-11T03:40:41.827
+          batchSize: 10
