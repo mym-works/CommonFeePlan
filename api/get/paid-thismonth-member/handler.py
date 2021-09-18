@@ -20,7 +20,7 @@ def items_query(house_name, begin_dt_str, end_dt_str):
     db_response = dynamodb_table.query(
         KeyConditionExpression=Key('House').eq(
             house_name) & Key('Timestamp').between(begin_dt_str, end_dt_str),
-        FilterExpression=Attr('Type').eq('Pay')
+        FilterExpression=Attr('Type').eq('Pay') & Attr('LiabilityMonth').begins_with(begin_dt_str)
     )
     return db_response['Items']
 
