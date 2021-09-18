@@ -1,0 +1,74 @@
+{
+  "to": "",
+  "messages": [
+    {
+      "type": "flex",
+      "altText": "Pay your Common Fee!!",
+      "contents": {
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "Pay your Common Fee!!",
+              "size": "lg",
+              "align": "center",
+              "gravity": "top",
+              "weight": "bold",
+              "color": "#FFFFFF"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://dol.ismcdn.jp/mwimgs/6/9/670m/img_69290f9ef73554e2ad54848e8a4cda2d1531400.jpg",
+          "size": "full",
+          "aspectRatio": "1.51:1",
+          "aspectMode": "fit"
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "The following have not yet paid for 'month':",
+              "size": "xxs",
+              "align": "center",
+              "gravity": "center",
+              "weight": "regular",
+              "wrap": true
+            },
+            {
+              "type": "separator",
+              "margin": "sm"
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "uri",
+                "label": "Pay now",
+                "uri": "https://commonfee.borderless.mym.works/payment/"
+              },
+              "color": "#15B0EA"
+            }
+          ]
+        },
+        "styles": {
+          "header": {
+            "backgroundColor": "#E73636"
+          }
+        }
+      }
+    }
+  ]
+}

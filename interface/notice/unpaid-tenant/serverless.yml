@@ -1,0 +1,30 @@
+service: CommonFeePlan-notice-unpaid
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-python-requirements
+
+provider:
+  name: aws
+  runtime: python3.8
+
+  stage: prd
+  region: ap-northeast-1
+
+  memorySize: 128
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - secretsmanager:GetSecretValue
+      Resource:
+        - "arn:aws:secretsmanager:ap-northeast-1:778289792916:secret:commonfee/notice-line-PuCdVb"
+
+functions:
+  main:
+    handler: handler.main
+    environment:
+      SECRET_NAME: commonfee/notice-line
+    events:
+      - schedule: cron(30 10 ? * SUN *)
