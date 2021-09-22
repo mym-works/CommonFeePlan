@@ -67,8 +67,11 @@ def main(event, context):
         record_type = stream_record['eventName']
 
         if record_type == 'INSERT':
-            response = notice_line_to_purchase(record)
-            print(response)
+            commonfee_type = record['NewImage']['Type']['S']
+            if commonfee_type == 'Purchase':
+                print(record)
+                response = notice_line_to_purchase(record)
+                print(response)
 
     return 'Successfully processed {} records.'.format(len(event['Records']))
 
